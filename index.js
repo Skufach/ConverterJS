@@ -40,10 +40,11 @@ const input = {
     },
 }
 
-function Item(projectId, sceneId, value) {
+function Item(projectId, sceneId, value, title) {
     this.projectId = projectId;//string
     this.sceneId = sceneId; //string
-    this.value = value; //number
+    this.value = value;//number
+    this.title = title;//string
 }
 
 function OutputMass(mass) {
@@ -51,7 +52,10 @@ function OutputMass(mass) {
 
     for (const key of Object.keys(mass)) {
         for (const key2 of Object.keys(mass[key])) {
-            Out.push(new Item(key, key2, mass[key][key2].value))
+            Out.push(new Item(
+                key, key2,
+                mass[key][key2].value,
+                mass[key][key2].title))
         }
     }
 
